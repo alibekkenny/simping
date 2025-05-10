@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:image" content="https://raw.githubusercontent.com/sojijr/valentine-website/main/public/images/favicon.png">
+    <link rel="icon" href="public/images/favicon.png" type="image/x-icon" />  
+    <title>Date</title>
+    <link rel="stylesheet" href="card.css">
+  </head>
+  <body>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>$(document).ready(function () {
+        $('.container').mouseenter(function () {
+            $('.card').stop().animate({
+                top: '-90px'
+            }, 'slow');
+        }).mouseleave(function () {
+            $('.card').stop().animate({
+                top: 0
+            }, 'slow');
+        });
+    });</script>
+  
+
+    <div class="container">  
+    
+        <div class="valentines">
+          <div class="envelope"></div>
+          <div class="front"></div>
+          <div class="card">
+          <div class="text"><span id="girl-name">Sweetheart</span>,</br>I'll be waiting!</div>
+          <div class="heart"></div>
+          </div>
+          <div class="hearts">
+            <div class="one"></div>
+            <div class="two"></div>
+            <div class="three"></div>
+            <div class="four"></div>
+            <div class="five"></div>
+          </div>
+        </div>
+        
+        </div>
+      
+        </div>
+
+  </body>
+  <script>
+    document.getElementById('girl-name').textContent = localStorage.getItem('girlName') ?? 'Sweetheart'; 
+  </script>
+</html>

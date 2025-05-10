@@ -1,0 +1,30 @@
+body {
+    background-image: url("https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjExMzEtcGF0dGVybi0wMS1reWk0cHdjOC5qcGc.jpg");
+}
+
+button {
+    padding: 10px 40px;
+    margin: 0 20px;
+    border-radius: 7px;
+    border: 0px;
+    /* background-color: #56899C; */
+    background-color: #544E69;
+    color: #FFF;
+    font-size: 120%;
+}
+
+#runaway-btn {
+
+    transition: 0.3s ease;
+    -webkit-transition: 0.3s ease;
+}
+
+button:hover {
+
+    background-color: #65569C;
+}
+
+button:hover {
+    background-color: #56899C;
+    /* background-color: #65569C; */
+}

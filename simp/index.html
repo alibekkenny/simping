@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>&hearts;</title>
+    <!-- <style>
+        .answer:hover {
+            background-color: #65569C;
+        }
+    </style> -->
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+
+<body>
+    <div style="width: 80%; margin: auto; text-align: center; position: relative;">
+        <h1 id="invite-text"
+            style="margin: 200px auto 50px auto; font-size: 300%; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: #565D9B;">
+            Aruzhan, will you be my valentine?</h1>
+        <!-- <img src="kiss.gif" style="border: 1px solid black;width: 20%; margin: auto;"><br> -->
+        <img id="gif" src="flower.gif" style="width: 300px; height: 300px; margin: auto;"><br>
+        <!-- <img src="sad.gif" style="border: 1px solid black;width: 20%; margin: auto;"> -->
+        <div style="width: 100%; margin-top: 20px;  display: flex; position: relative; justify-content: center;">
+            <div class="centering" style="position: relative;">
+                <button class="answer" onclick="tapYes(this)">Yes</button>
+                <!-- <button class="answer" id="no-button">No</button> -->
+                <button id='runaway-btn' onmouseover="runaway(this)" onclick="runaway(this)">No</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script>
+    var offset = 40;
+
+    function tapYes(id) {
+        if ((document.getElementById('gif').src.split("/"))[6] != "flower.gif") {
+            // console.log(document.getElementById('gif').src.split("/")[6])
+            document.getElementById('gif').src = "flower.gif";
+        }
+        if (document.getElementById('invite-text').textContent != "Love you!") {
+            // console.log(document.getElementById('invite-text').textContent)
+            document.getElementById('invite-text').textContent = "Love you!";
+        }
+        docs = document.querySelectorAll("button");
+        docs.forEach(element => {
+            element.style.display = 'none';
+        });
+    }
+    function runaway(id) {
+        if (document.getElementById('invite-text').textContent != "...") {
+            // console.log(document.getElementById('invite-text').textContent)
+            document.getElementById('invite-text').textContent = "...";
+        }
+        if ((document.getElementById('gif').src.split("/"))[6] != "sad.gif") {
+            // console.log(document.getElementById('gif').src.split("/")[6])
+            document.getElementById('gif').src = "sad.gif";
+        }
+        id.style.position = 'absolute';
+        id.style.top = Math.round(Math.random() * 250) + 'px';
+        id.style.left = Math.round(Math.random() * 250) + 'px';
+    }
+
+</script>
+
+</html>

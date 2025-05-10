@@ -1,0 +1,79 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date</title>
+    <style>
+        body {
+            text-align: center;
+            margin-top: 30px;
+            font-family: 'Courier';
+            background-color:#FFF5E4;
+            color: #FF9494;
+        }
+        #valentineQuestion {
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+        .answerButton {
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            margin: 10px;
+            font-family: 'courier';
+            margin-bottom: 20px;
+            background-color:#FFE3E1;
+            color: #e67373;
+            border-radius: 12px;
+            border: 2px solid #FFE3E1;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="valentineQuestion"><b><span id="girl-name">Sweetheart</span>, will you go on a date with me?</b></div>
+    <img src="cat.gif" alt="cat asking question" class="responsive">
+    <br>
+    <button class="answerButton" id="yes-btn" onclick="submitYes()">Yes!!!</button>
+    <button class="answerButton" id="runaway-btn" onmouseover="runaway(this)" onclick="runaway(this)">Nooo o(╥﹏╥)o</button>
+    <br>
+    
+
+    <script>
+        let girlName = 'Best girl';
+        if (!localStorage.getItem('girlName')) {
+            localStorage.setItem('girlName', girlName);
+        }
+        document.getElementById('girl-name').textContent = localStorage.getItem('girlName'); 
+        document.getElementById('runaway-btn').addEventListener('click', function() {
+            var yesButton = document.querySelector('#yes-btn');
+            var currentFontSize = parseInt(window.getComputedStyle(yesButton).fontSize);
+            yesButton.style.fontSize = (currentFontSize + 10) + 'px'; // Increase font size by 5px
+        });
+        var offset = 40;
+
+        function runaway(id) {
+            id.style.position = 'absolute';
+            id.style.bottom = Math.round(Math.random() * 250) + 'px';
+            id.style.right = Math.round(Math.random() * 250) + 'px';
+        }
+
+        function submitYes() {
+            fetch('/api/send-telegram', {
+                method: "POST", 
+                headers: {
+                'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    message: (localStorage.getItem('girlName') ?? 'She') + ' said yes!'
+                })
+            });
+
+            location.href='/thankyou.html';
+        }
+    </script>
+
+
+</body>
+
+</html>
