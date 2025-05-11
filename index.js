@@ -14,7 +14,11 @@ mongoose.connect(process.env.mongodb_uri).then(() => {
 });
  
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'valentine.github.io-main')));
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('/secret', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'secret.html'));
+});
 
 app.get('/api/get-girl-name', (req, res) => {
     res.json({
