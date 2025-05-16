@@ -31,31 +31,40 @@
 </head>
 
 <body>
-    <div id="valentineQuestion"><b><span id="girl-name">Sweetheart</span>, will you go on a date with me?</b></div>
+    <div id="valentineQuestion"><b><span id="girl-name">Saulet</span>, will you go out with me?</b></div>
     <img src="cat.gif" alt="cat asking question" class="responsive">
     <br>
     <button class="answerButton" id="yes-btn" onclick="submitYes()">Yes!!!</button>
-    <button class="answerButton" id="runaway-btn" onmouseover="runaway(this)" onclick="runaway(this)">Nooo o(╥﹏╥)o</button>
+    <button class="answerButton" id="runaway-btn" onclick="submitNo()">Nooo o(╥﹏╥)o</button>
     <br>
     
 
     <script>
-        let girlName = 'Saulet';
+        let girlName = 'test';
         if (!localStorage.getItem('girlName')) {
             localStorage.setItem('girlName', girlName);
         }
         document.getElementById('girl-name').textContent = localStorage.getItem('girlName'); 
-        document.getElementById('runaway-btn').addEventListener('click', function() {
-            var yesButton = document.querySelector('#yes-btn');
-            var currentFontSize = parseInt(window.getComputedStyle(yesButton).fontSize);
-            yesButton.style.fontSize = (currentFontSize + 10) + 'px'; // Increase font size by 5px
-        });
         var offset = 40;
 
-        function runaway(id) {
-            id.style.position = 'absolute';
-            id.style.bottom = Math.round(Math.random() * 250) + 'px';
-            id.style.right = Math.round(Math.random() * 250) + 'px';
+        // function runaway(id) {
+        //     id.style.position = 'absolute';
+        //     id.style.bottom = Math.round(Math.random() * 250) + 'px';
+        //     id.style.right = Math.round(Math.random() * 250) + 'px';
+        // }
+
+        function submitNo() {
+            fetch('/api/send-telegram', {
+                method: "POST", 
+                headers: {
+                'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    message: "<blockquote>Sometimes,\nthings don't go as planned...\n\nIt's called life</blockquote>\n" + (localStorage.getItem('girlName') ?? 'She') + ' said no!'
+                })
+            });
+
+            location.href='/no.html';
         }
 
         function submitYes() {
